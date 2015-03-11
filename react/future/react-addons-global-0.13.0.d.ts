@@ -1,8 +1,8 @@
-// Type definitions for ReactWithAddons v0.13.0 RC2 (internal module)
+// Type definitions for ReactWithAddons v0.13.0 (internal module)
 // Project: http://facebook.github.io/react/
 // Definitions by: Asana <https://asana.com>, AssureSign <http://www.assuresign.com>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
-/// <reference path="react-global.d.ts" />
+/// <reference path="react-global-0.13.0.d.ts" />
 
 declare module React {
     //
@@ -23,11 +23,7 @@ declare module React {
         classSet(cx: { [key: string]: boolean }): string;
         classSet(...classList: string[]): string;
 
-        cloneWithProps<P>(element: DOMElement<P>, props: P): DOMElement<P>;
-        cloneWithProps<P>(element: ClassicElement<P>, props: P): ClassicElement<P>;
         cloneWithProps<P>(element: ReactElement<P>, props: P): ReactElement<P>;
-
-        createFragment(object: { [key: string]: ReactNode }): ReactFragment;
 
         update(value: any[], spec: UpdateArraySpec): any[];
         update(value: {}, spec: UpdateSpec): any;
@@ -41,6 +37,8 @@ declare module React {
     // React.addons (Transitions)
     // ----------------------------------------------------------------------
 
+    type ReactType = ComponentClass<any, any> | string;
+
     interface TransitionGroupProps {
         component?: ReactType;
         childFactory?: (child: ReactElement<any>) => ReactElement<any>;
@@ -53,8 +51,10 @@ declare module React {
         transitionLeave?: boolean;
     }
 
-    type CSSTransitionGroup = ComponentClass<CSSTransitionGroupProps>;
-    type TransitionGroup = ComponentClass<TransitionGroupProps>;
+    type CSSTransitionGroup =
+        ComponentClass<CSSTransitionGroupProps, any>;
+    type TransitionGroup =
+        ComponentClass<TransitionGroupProps, any>;
 
     //
     // React.addons (Mixins)
@@ -146,7 +146,7 @@ declare module React {
         isCompositeComponent(instance: Component<any, any>): boolean;
         isCompositeComponentWithType(
             instance: Component<any, any>,
-            type: ComponentClass<any>): boolean;
+            type: ComponentClass<any, any>): boolean;
 
         findAllInRenderedTree(
             tree: Component<any, any>,
@@ -166,19 +166,19 @@ declare module React {
             tree: Component<any, any>,
             tagName: string): DOMComponent<any>;
 
-        scryRenderedComponentsWithType<P>(
+        scryRenderedComponentsWithType<P, S>(
             tree: Component<any, any>,
-            type: ComponentClass<P>): Component<P, {}>[];
+            type: ComponentClass<P, S>): Component<P, S>[];
         scryRenderedComponentsWithType<C extends Component<any, any>>(
             tree: Component<any, any>,
-            type: ComponentClass<any>): C[];
+            type: ComponentClass<any, any>): C[];
 
-        findRenderedComponentWithType<P>(
+        findRenderedComponentWithType<P, S>(
             tree: Component<any, any>,
-            type: ComponentClass<P>): Component<P, {}>;
+            type: ComponentClass<P, S>): Component<P, S>;
         findRenderedComponentWithType<C extends Component<any, any>>(
             tree: Component<any, any>,
-            type: ComponentClass<any>): C;
+            type: ComponentClass<any, any>): C;
     }
 
     interface SyntheticEventData {

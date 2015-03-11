@@ -1,5 +1,7 @@
 /// <reference path="gridster.d.ts" />
 
+var el: HTMLElement = new HTMLElement();
+
 interface SerializeData {
 	x?: number;
 	y?: number;
@@ -16,7 +18,7 @@ var options: GridsterOptions = {
 	}
 };
 
-var gridster = <Gridster>$('.gridster ul').gridster(options).data('grister');
+var gridster = <Gridster>$('.gridster ul').gridster(el, options).data('grister');
 gridster.add_widget('<li class="new">The HTML of the widget...</li>', 2, 1);
 gridster.remove_widget($('gridster li').eq(3).get(0));
 var json = gridster.serialize<SerializeData>();
