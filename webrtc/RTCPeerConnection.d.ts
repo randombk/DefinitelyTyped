@@ -71,8 +71,8 @@ interface RTCMediaConstraints {
 }
 
 interface RTCMediaOfferConstraints {
-  offerToReceiveAudio: boolean;
-  offerToReceiveVideo: boolean;
+  OfferToReceiveAudio: boolean;
+  OfferToReceiveVideo: boolean;
 }
 
 interface RTCSessionDescriptionInit {
@@ -261,9 +261,7 @@ interface RTCPeerConnection {
   signalingState: string; // RTCSignalingState; see TODO(1)
   updateIce(configuration?: RTCConfiguration,
             constraints?: RTCMediaConstraints): void;
-  addIceCandidate(candidate:RTCIceCandidate,
-                  successCallback:() => void,
-                  failureCallback:RTCPeerConnectionErrorCallback): void;
+  addIceCandidate(candidate: RTCIceCandidate): void;
   iceGatheringState: string;  // RTCIceGatheringState; see TODO(1)
   iceConnectionState: string;  // RTCIceConnectionState; see TODO(1)
   getLocalStreams(): MediaStream[];

@@ -4,7 +4,7 @@
 var config: RTCConfiguration =
     { iceServers: [{ url: "stun.l.google.com:19302" }] };
 var constraints: RTCMediaConstraints =
-    { mandatory: { offerToReceiveAudio: true, offerToReceiveVideo: true } };
+    { mandatory: { OfferToReceiveAudio: true, OfferToReceiveVideo: true } };
 
 var peerConnection: RTCPeerConnection =
     new RTCPeerConnection(config, constraints);

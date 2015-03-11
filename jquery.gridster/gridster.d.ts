@@ -160,10 +160,11 @@ interface JQuery {
 
 	/**
 	* Gridster
+	* @param el The HTMLElement that contains all the widgets.
 	* @param options An object with all the gridster options you want to overwrite.
 	* @return Gridster jQuery instance.
 	**/
-	gridster(options?: GridsterOptions): JQuery;
+	gridster(el: HTMLElement, options?: GridsterOptions): JQuery;
 }
 
 interface Gridster {
